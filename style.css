@@ -1220,6 +1220,9 @@ time {
   color: inherit;
 }
 
+.contents-list .on {
+  background: #ccc;
+}
 .contents-list ul {
   padding-left: 0;
   list-style: none;
