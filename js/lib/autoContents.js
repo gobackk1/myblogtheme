@@ -7,12 +7,15 @@
     var headlinesLength = $headlines.length;
     var subHeadlinesLength = $subHeadlines.length;
     var subHeadCount = 0;
+    var headOffsets = [];
+    var listAnchors;
 
     initContents();
 
     function initContents() {
       createContents();
       setAnchors();
+      setHeadOffsets()
     }
 
     //目次のDOM生成
@@ -57,10 +60,11 @@
         var href = $(this).attr("href");
         var target = $(href == "#" || href == "" ? 'html' : href);
         var position = target.offset().top;
-        $('body,html').animate({ scrollTop: position }, speed, 'swing');
+        $('body,html').animate({ scrollTop: position + 1 }, speed, 'swing');
         history.pushState(null, null, href);
         return false;
       });
+      listAnchors = $('.contents-list li a');
     }
 
     //目次にしたタイトルにアンカーをつける
@@ -71,6 +75,32 @@
       $subHeadlines.each(function (i) {
         this.id = 'a_' + i;
       });
+    }
+
+    //各見出しのオフセットを配列にする
+    function setHeadOffsets() {
+      var headlines = $('.single-contents h2,.single-contents h3');
+      headlines.each(function (i) {
+        headOffsets.push(headlines.eq(i).offset().top);
+      });
+    }
+
+    //スクロール位置に応じてアンカーにクラスをつける
+    $(window).on('scroll', function () {
+      var scrollTop = $(window).scrollTop();
+      onScrollAddClass(scrollTop);
+    });
+
+    function onScrollAddClass(scrollTop) {
+      var len = headOffsets.length;
+      for (i = 0; i < len; i++) {
+        var value = headOffsets[i];
+        if (scrollTop < value) {
+          listAnchors.removeClass('on');
+          listAnchors.eq(i).addClass('on');
+          return;
+        }
+      }
     }
   });
 })(jQuery);
