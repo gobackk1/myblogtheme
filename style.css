@@ -116,11 +116,7 @@ body {
   letter-spacing: .05em;
 }
 
-@media (max-width:767px) {
-  body {
-    overflow: hidden;
-  }
-}
+
 
 @media (min-width:768px) {
   body {
@@ -329,9 +325,8 @@ p {
   color: #fff;
   background: -o-linear-gradient(342deg, rgba(78, 78, 78, 1) 8%, rgba(77, 77, 77, 1) 16%, rgb(43, 43, 43) 47%, rgb(29, 29, 29) 70%, rgb(16, 16, 16) 100%);
   background: linear-gradient(108deg, rgba(78, 78, 78, 1) 8%, rgba(77, 77, 77, 1) 16%, rgb(43, 43, 43) 47%, rgb(29, 29, 29) 70%, rgb(16, 16, 16) 100%);
-  -ms-grid-columns: 10px 1fr 10px;
-  grid-template-columns: 10px 1fr 10px;
   grid-column: 1/-1;
+  overflow-x: hidden;
 }
 
 .footer a {
