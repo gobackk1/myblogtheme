@@ -97,7 +97,7 @@
         var value = headOffsets[i];
         if (scrollTop < value) {
           listAnchors.removeClass('on');
-          listAnchors.eq(i).addClass('on');
+          listAnchors.eq(i-1).addClass('on');
           return;
         }
       }
