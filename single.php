@@ -33,7 +33,6 @@
     </div>
   </article>
   <?php endwhile; endif; ?>
-  <?php comments_template(); ?>
   <?php the_post_navigation(); ?>
 </main>
 <?php get_footer(); ?>
