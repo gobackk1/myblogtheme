@@ -8,7 +8,6 @@ function mytheme_setup()
   add_theme_support('title-tag');
   add_theme_support('wp-block-styles'); //グーテンベルグ由来のCSS
   add_theme_support('responsive-embeds'); //埋め込みコンテンツのレスポンシブ化
-  add_theme_support( 'automatic-feed-links' );//RSSfeed
   add_theme_support('editor-font-sizes', array(
     array(
       'name' => '小',
@@ -168,3 +167,5 @@ remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 //短縮URLの表示をしないなら
 remove_action('wp_head', 'wp_shortlink_wp_head');
+//RSSフィードを使わないなら
+remove_action('wp_head', 'feed_links_extra', 3);
