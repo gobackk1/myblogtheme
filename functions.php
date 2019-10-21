@@ -86,7 +86,7 @@ add_action( 'init', function() {
   wp_deregister_script( 'jquery-core' );
   wp_register_script( 'jquery', false, ['jquery-core'], $jquery_ver, true );
   wp_register_script( 'jquery-core', $jquery_src, [], $jquery_ver, false );
-} );
+});
 
 //プラグインCSSをフッターで読み込む
 function my_dequeue_plugin_files(){
