@@ -1192,7 +1192,7 @@ time {
     font-size: var(--f5);
   }
   p, li {
-    font-size: var(--f6);
+    font-size: 14px;
   }
 }
 
