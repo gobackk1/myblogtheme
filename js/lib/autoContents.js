@@ -90,15 +90,23 @@
       var scrollTop = $(window).scrollTop();
       onScrollAddClass(scrollTop);
     });
-
     function onScrollAddClass(scrollTop) {
       var len = headOffsets.length;
       for (i = 0; i < len; i++) {
         var value = headOffsets[i];
         if (scrollTop < value) {
+          if (i === 0) {
+            listAnchors.removeClass('on');
+            listAnchors.eq(i).addClass('on');
+            return;
+          }  else {
+            listAnchors.removeClass('on');
+            listAnchors.eq(i - 1).addClass('on');
+            return;
+          }
+        } else if (i === len - 1 && scrollTop > value) {
           listAnchors.removeClass('on');
-          listAnchors.eq(i-1).addClass('on');
-          return;
+          listAnchors.eq(i).addClass('on');
         }
       }
     }
