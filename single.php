@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main class="single-main">
   <?php if(have_posts()): while(have_posts()):the_post(); ?>
-  <article <?php post_class('blocks'); ?>>
+  <div <?php post_class('blocks'); ?>>
     <?php
       $thumbnail_id = get_post_thumbnail_id();
       if(has_post_thumbnail()){
@@ -31,8 +31,11 @@
     <div class="single-contents">
       <?php the_content(); ?>
     </div>
-  </article>
+  </div>
   <?php endwhile; endif; ?>
+  <section>
+    <?php comments_template(); ?>
+  </section>
   <?php the_post_navigation(); ?>
 </main>
 <?php get_footer(); ?>
